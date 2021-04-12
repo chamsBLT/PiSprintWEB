@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des ingredients{% endblock %}
+
+{% block body %}
+    <h1>Ingredients</h1>
+    <a href="{{ path('ingredient_new') }}"><button type="button" style=" top: 200px;  background-color: #4CAF50;border: none;color:white;padding: 5px 15px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;">Créer un nouveau</button></a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Categorie</th>
+                <th>Calories</th>
+                <th>Nom</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ingredient in ingredients %}
+            <tr>
+                <td>{{ ingredient.id }}</td>
+                <td>{{ ingredient.category }}</td>
+                <td>{{ ingredient.caloriesCategory }}</td>
+                <td>{{ ingredient.name }}</td>
+                <td>
+
+                        <a href="{{ path('ingredient_show', {'id': ingredient.id}) }}">
+                            <img  src="{{ asset('back/images/samples/eye.png') }}" width="30" height="30">
+                        </a>
+
+                        <a href="{{ path('ingredient_edit', {'id': ingredient.id}) }}">
+                            <img  src="{{ asset('back/images/samples/edit.png') }}" width="30" height="30">
+                        </a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

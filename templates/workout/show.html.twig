@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Workout{% endblock %}
+
+{% block body %}
+    <h1>Workout</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ workout.id }}</td>
+            </tr>
+            <tr>
+                <th>NBR_Series</th>
+                <td>{{ workout.nbrSeries }}</td>
+            </tr>
+            <tr>
+                <th>Duree_Serie</th>
+                <td>{{ workout.dureeSerie }}</td>
+            </tr>
+            <tr>
+                <th>BodyPart</th>
+                <td>{{ workout.bodyPart }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ workout.description }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ workout.name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    {{ include('workout/_delete_form.html.twig') }}
+    <br>
+    <br>
+    <a href="{{ path('workout_edit', {'id': workout.id}) }}"style="  background-color: #FFC300; color: white; padding: 10px 30px;  text-align: center;  text-decoration: none; display: inline-block;">Modifier</a>
+    <br>
+    <a href="{{ path('workout_index') }} "style="  background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;">Retour</a>
+{% endblock %}

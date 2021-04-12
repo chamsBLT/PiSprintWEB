@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Ingredient{% endblock %}
+
+{% block body %}
+    <h1>Nouveau Ingredient</h1>
+
+    {{ include('ingredient/_form.html.twig') }}
+
+    <br>
+    <br>
+    <br>
+
+    <a href="{{ path('ingredient_index') }}"style="  background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;">Retour</a>
+{% endblock %}

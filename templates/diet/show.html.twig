@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Régime{% endblock %}
+
+{% block body %}
+    <h1>Diet</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <td>{{ diet.id }}</td>
+            </tr>
+            <tr>
+                <th>Petit Déjeuner</th>
+                <td>{{ diet.breakfast }}</td>
+            </tr>
+            <tr>
+                <th>Déjeuner</th>
+                <td>{{ diet.lunch }}</td>
+            </tr>
+            <tr>
+                <th>Diner</th>
+                <td>{{ diet.dinner }}</td>
+            </tr>
+            <tr>
+                <th>Gouter</th>
+                <td>{{ diet.snacks }}</td>
+            </tr>
+            <tr>
+                <th>Calories</th>
+                <td>{{ diet.calories }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    {{ include('diet/_delete_form.html.twig') }}
+
+    <br>
+    <br>
+    <a href="{{ path('diet_edit', {'id': diet.id}) }}"style="  background-color: #FFC300; color: white; padding: 10px 30px;  text-align: center;  text-decoration: none; display: inline-block;">Modifier</a>
+    <br>
+    <a href="{{ path('diet_index') }}"style="  background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;">Retour</a>
+{% endblock %}

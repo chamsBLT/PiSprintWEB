@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Workout{% endblock %}
+
+{% block body %}
+    <h1>Workout</h1>
+    <a href="{{ path('workout_new') }}"><button type="button" style=" top: 200px;  background-color: #4CAF50;border: none;color:white;padding: 5px 15px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;">Créer un nouveau</button></a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NBR_Series</th>
+                <th>Duree_Serie</th>
+                <th>BodyPart</th>
+                <th>Description</th>
+                <th>Nom</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for workout in workouts %}
+            <tr>
+                <td>{{ workout.id }}</td>
+                <td>{{ workout.nbrSeries }}</td>
+                <td>{{ workout.dureeSerie }}</td>
+                <td>{{ workout.bodyPart }}</td>
+                <td>{{ workout.description }}</td>
+                <td>{{ workout.name }}</td>
+                <td>
+                    <a href="{{ path('workout_show', {'id': workout.id}) }}">
+                        <img  src="{{ asset('back/images/samples/eye.png') }}" width="30" height="30">
+                    </a>
+
+                    <a href="{{ path('workout_edit', {'id': workout.id}) }}">
+                        <img  src="{{ asset('back/images/samples/edit.png') }}" width="30" height="30">
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

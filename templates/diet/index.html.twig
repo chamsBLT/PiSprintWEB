@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des régimes{% endblock %}
+
+{% block body %}
+    <h1>Régimes</h1>
+    <a href="{{ path('diet_new') }}"><button type="button" style=" top: 200px;  background-color: #4CAF50;border: none;color:white;padding: 5px 15px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;">Créer un nouveau</button></a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Petit déjeuner</th>
+                <th>Déjeuner</th>
+                <th>Diner</th>
+                <th>Gouter</th>
+                <th>Calories</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for diet in diets %}
+            <tr>
+                <td>{{ diet.id }}</td>
+                <td>{{ diet.breakfast }}</td>
+                <td>{{ diet.lunch }}</td>
+                <td>{{ diet.dinner }}</td>
+                <td>{{ diet.snacks }}</td>
+                <td>{{ diet.calories }}</td>
+                <td>
+                    <a href="{{ path('diet_show', {'id': diet.id}) }}">
+                        <img  src="{{ asset('back/images/samples/eye.png') }}" width="30" height="30">
+                    </a>
+
+                    <a href="{{ path('diet_edit', {'id': diet.id}) }}">
+                        <img  src="{{ asset('back/images/samples/edit.png') }}" width="30" height="30">
+                    </a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock %}

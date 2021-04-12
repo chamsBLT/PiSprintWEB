@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Régime{% endblock %}
+
+{% block body %}
+    <h1>Modifier Régime</h1>
+
+    {{ include('diet/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    {{ include('diet/_delete_form.html.twig') }}
+    <br>
+    <br>
+    <a href="{{ path('diet_index') }}"style="  background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;">Retour</a>
+{% endblock %}
