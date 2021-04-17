@@ -1,3 +1,7 @@
 home:
   path: /WorkoutandDiet
-  controller: App\Controller\DefaultController::FrontPage
+  controller: App\Controller\DefaultController::WorkoutandDiet
+
+workoutF:
+  path: /WorkoutF
+  controller: App\Controller\DefaultController::WorkoutF
