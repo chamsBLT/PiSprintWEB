@@ -33,3 +33,7 @@ WorkoutLegs:
 WorkoutGlutes:
   path: /WorkoutShoulders
   controller: App\Controller\DefaultController::GlutesWlist
+
+searchWorkout:
+  path: /searchWorkout
+  controller: App\Controller\WorkoutController::searchWorkout

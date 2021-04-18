@@ -8,6 +8,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/workout")
@@ -94,4 +96,19 @@ class WorkoutController extends AbstractController
 
         return $this->redirectToRoute('workout_index');
     }
+
+    /**
+     * @Route("/searchWorkout ", name="searchWorkout")
+     */
+    public function searchWorkout(Request $request,NormalizerInterface $Normalizer)
+    {
+        $repository = $this->getDoctrine()->getRepository(Workout::class);
+        $requestString=$request->get('searchValue');
+        $workout = $repository->findByBodyPart($requestString);
+        $jsonContent = $Normalizer->normalize($workout, 'json',['groups'=>'workout:read']);
+        $retour=json_encode($jsonContent);
+        return new Response($retour);
+
+    }
+
 }

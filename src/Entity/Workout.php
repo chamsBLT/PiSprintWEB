@@ -4,6 +4,10 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 
 /**
  * Workout
@@ -19,6 +23,7 @@ class Workout
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("workout:read")
      */
     private $id;
 
@@ -27,6 +32,7 @@ class Workout
      *
      * @ORM\Column(name="nbr_series", type="integer", nullable=false, options={"default"="1"})
      * @Assert\NotEqualTo(value = 0,message = "Le nombre des series doit étre > 1")
+     * @Groups("workout:read")
      */
     private $nbrSeries = 1;
 
@@ -35,6 +41,7 @@ class Workout
      *
      * @ORM\Column(name="duree_serie", type="integer", nullable=false, options={"default"="20"})
      * @Assert\NotEqualTo(value = 0,message = "La durée d'une serie doit étre > 1")
+     * @Groups("workout:read")
      */
     private $dureeSerie = 20;
 
@@ -43,6 +50,7 @@ class Workout
      *
      * @ORM\Column(name="body_part", type="string", length=255, nullable=false)
      * @Assert\NotBlank
+     * @Groups("workout:read")
      */
     private $bodyPart='';
 
@@ -51,6 +59,7 @@ class Workout
      *
      * @ORM\Column(name="description", type="string", length=255, nullable=false)
      * @Assert\NotBlank
+     * @Groups("workout:read")
      */
     private $description='';
 
@@ -59,6 +68,7 @@ class Workout
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      * @Assert\NotBlank
+     * @Groups("workout:read")
      */
     private $name = '';
 
@@ -168,5 +178,12 @@ class Workout
         $this->name = $name;
     }
 
+    public function findByBodyPart($body_part){
+        return $this->createQueryBuilder('workout')
+            ->where('workout.body_part LIKE :body_part')
+            ->setParameter('body_part', '%'.$body_part.'%')
+            ->getQuery()
+            ->getResult();
+    }
 
 }

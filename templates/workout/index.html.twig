@@ -6,7 +6,8 @@
     <h1>Workout</h1>
     <a href="{{ path('workout_new') }}"><button type="button" style=" top: 200px;  background-color: #4CAF50;border: none;color:white;padding: 5px 15px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;">Créer un nouveau</button></a>
 
-    <table class="table">
+    <input  type="text" id="search" class="form-control" placeholder="Recherche">
+    <table class="table" id="t">
         <thead>
             <tr>
                 <th>ID</th>
@@ -18,7 +19,7 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="all">
         {% for workout in workouts %}
             <tr>
                 <td>{{ workout.id }}</td>
@@ -43,7 +44,41 @@
             </tr>
         {% endfor %}
         </tbody>
+        <tbody id="search">
+        </tbody>
     </table>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $( document ).ready(function() {
+            $("#search").keyup(function(e){
+                var value = $(this).val();
+                $.ajax({
+                    url : "{{ path('searchWorkout') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour){
+                        if(retour){
+                            $('#t tbody#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+                                $('#t tbody#all').hide();
+                                $('#t tbody#search').append('<tr><td> '+obj.id+'  </td><td>    '+obj.nbrSeries+'  </td><td>'+obj.dureeSerie +' </td><td>'+obj.bodyPart +' </td><td>'+obj.description +' </td><td>'+obj.name +' </td><td><a href="workout_show'+obj.id+'">modifier</a> </br><a href="workout_edit'+obj.id+'">supprimer</a></td></tr>');
+                            });
+                        }
+                        else
+                        {
+                            $('#t tbody#all').show();
+                            $('#t tbody#search').empty();
+                            $('#t tbody#search').fadeIn('fast');
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
 
 
 {% endblock %}
