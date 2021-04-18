@@ -1,0 +1,70 @@
+{% extends 'front.html.twig' %}
+
+{% block test %}
+<table>
+    <thead>
+    <tr>
+        <th>
+            <a href="{{ path('WorkoutShoulders') }}">
+                <img  src="{{ asset('front/img/muscles/shoulders.png') }}" style="height: 200px;width: 200px;">
+                <br>
+                <h5 style="text-align: center;">Epaules</h5>
+            </a>
+        </th>
+
+        <th>
+            <a href="{{ path('WorkoutLegs') }}">
+                <img  src="{{ asset('front/img/muscles/legs.png') }}" style="height: 200px;width: 200px;">
+                <br>
+                <h5 style="text-align: center;">Jambes</h5>
+            </a>
+        </th>
+
+        <th>
+            <a href="{{ path('WorkoutArms') }}">
+                <img  src="{{ asset('front/img/muscles/arms.png') }}" style="height: 200px;width: 200px;">
+                <br>
+                <h5 style="text-align: center;">Bras</h5>
+            </a>
+        </th>
+
+        <th>
+            <a href="{{ path('WorkoutGlutes') }}">
+                <img  src="{{ asset('front/img/muscles/glutes.png') }}" style="height: 200px;width: 200px;">
+                <br>
+                <h5 style="text-align: center;">Glutes</h5>
+            </a>
+        </th>
+
+        <th>
+            <a href="{{ path('WorkoutBack') }}">
+                <img  src="{{ asset('front/img/muscles/back.png') }}" style="height: 200px;width: 200px;">
+                <br>
+                <h5 style="text-align: center;">Dos</h5>
+            </a>
+        </th>
+
+
+
+        <th>
+            <a href="{{ path('WorkoutAbs') }}">
+                <img  src="{{ asset('front/img/muscles/abs.png') }}" style="height: 200px;width: 200px;">
+                <br>
+                <h5 style="text-align: center;">Abdos</h5>
+            </a>
+        </th>
+
+        <th>
+            <a href="{{ path('WorkoutChest') }}">
+                <img  src="{{ asset('front/img/muscles/chest.png') }}" style="height: 200px;width: 200px;">
+                <br>
+                <h5 style="text-align: center;">Poitrine</h5>
+            </a>
+        </th>
+    </tr>
+    </thead>
+</table>
+    <br>
+    <br>
+    <a href="{{ path('WorkoutandDiet') }} "style="  background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;">Retour</a>
+{% endblock %}

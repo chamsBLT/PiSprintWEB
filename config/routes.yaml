@@ -1,7 +1,35 @@
-home:
+WorkoutandDiet:
   path: /WorkoutandDiet
   controller: App\Controller\DefaultController::WorkoutandDiet
 
-workoutF:
-  path: /WorkoutF
-  controller: App\Controller\DefaultController::WorkoutF
+WorkoutChoice:
+  path: /WorkoutChoice
+  controller: App\Controller\DefaultController::WorkoutList
+
+WorkoutArms:
+  path: /WorkoutArms
+  controller: App\Controller\DefaultController::ArmsWlist
+
+WorkoutShoulders:
+  path: /WorkoutShoulders
+  controller: App\Controller\DefaultController::ShouldersWlist
+
+WorkoutAbs:
+  path: /WorkoutAbs
+  controller: App\Controller\DefaultController::AbsWlist
+
+WorkoutChest:
+  path: /WorkoutChest
+  controller: App\Controller\DefaultController::ChestWlist
+
+WorkoutBack:
+  path: /WorkoutBack
+  controller: App\Controller\DefaultController::BackWlist
+
+WorkoutLegs:
+  path: /WorkoutLegs
+  controller: App\Controller\DefaultController::LegsWlist
+
+WorkoutGlutes:
+  path: /WorkoutShoulders
+  controller: App\Controller\DefaultController::GlutesWlist
