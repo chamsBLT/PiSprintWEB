@@ -29,3 +29,11 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    app.chart.data:
+        class: AppBundle\Chart\ChartData
+        arguments: [ '@doctrine.orm.entity_manager' ]
+
+    app.chart:
+        class: AppBundle\Chart\Chart
+        arguments: [ '@app.chart.data' ]

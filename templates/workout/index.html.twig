@@ -4,7 +4,9 @@
 
 {% block body %}
     <h1>Workout</h1>
+
     <a href="{{ path('workout_new') }}"><button type="button" style=" top: 200px;  background-color: #4CAF50;border: none;color:white;padding: 5px 15px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;">Créer un nouveau</button></a>
+    <a href="{{ path('WorkoutStats') }}"><button type="button" style=" top: 200px;  background-color: #4CAF50;border: none;color:white;padding: 5px 15px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;">Stats</button></a>
 
     <input  type="text" id="search" class="form-control" placeholder="Recherche">
     <table class="table" id="t">

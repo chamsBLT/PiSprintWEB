@@ -22,6 +22,16 @@ searchDiet:
 
 
 
+WorkoutStats:
+  path: /WorkoutStats
+  controller: App\Controller\DefaultController::WorkoutStats
+
+IngredientStats:
+  path: /IngredientStats
+  controller: App\Controller\DefaultController::IngredientStats
+
+
+
 Diet1600:
   path: /Diet1600
   controller: App\Controller\DefaultController::D1600list
