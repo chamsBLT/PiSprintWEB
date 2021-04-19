@@ -244,7 +244,7 @@ class DefaultController extends AbstractController
         $pieChart = new  PieChart();
         $pieChart->getData()->setArrayToDataTable([["Muscle","N"]]+$data);
 
-        $pieChart->getOptions()->setTitle('Stats : Workout');
+        $pieChart->getOptions()->setTitle('Stats : Workout /Muscle');
         $pieChart->getOptions()->setHeight(500);
         $pieChart->getOptions()->setWidth(900);
         $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
@@ -278,7 +278,7 @@ class DefaultController extends AbstractController
         $pieChart = new  PieChart();
         $pieChart->getData()->setArrayToDataTable([["Muscle","N"]]+$data);
 
-        $pieChart->getOptions()->setTitle('Stats : Ingredients ');
+        $pieChart->getOptions()->setTitle('Stats : Ingredients /Categorie ');
         $pieChart->getOptions()->setHeight(500);
         $pieChart->getOptions()->setWidth(900);
         $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
@@ -312,7 +312,7 @@ class DefaultController extends AbstractController
         $pieChart = new  PieChart();
         $pieChart->getData()->setArrayToDataTable([["Muscle","N"]]+$data);
 
-        $pieChart->getOptions()->setTitle('Stats : Diet ');
+        $pieChart->getOptions()->setTitle('Stats : Diet /Calories');
         $pieChart->getOptions()->setHeight(500);
         $pieChart->getOptions()->setWidth(900);
         $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
