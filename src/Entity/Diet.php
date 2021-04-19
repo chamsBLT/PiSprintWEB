@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * Diet
  *
@@ -18,6 +21,7 @@ class Diet
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("diet:read")
      */
     private $id;
 
@@ -26,6 +30,7 @@ class Diet
      *
      * @ORM\Column(name="breakfast", type="string", length=255, nullable=false)
      * @Assert\NotBlank
+     * @Groups("diet:read")
      */
     private $breakfast='';
 
@@ -34,6 +39,7 @@ class Diet
      *
      * @ORM\Column(name="lunch", type="string", length=255, nullable=false)
      * @Assert\NotBlank
+     * @Groups("diet:read")
      */
     private $lunch='';
 
@@ -42,6 +48,7 @@ class Diet
      *
      * @ORM\Column(name="dinner", type="string", length=255, nullable=false)
      * @Assert\NotBlank
+     * @Groups("diet:read")
      */
     private $dinner='';
 
@@ -50,6 +57,7 @@ class Diet
      *
      * @ORM\Column(name="snacks", type="string", length=255, nullable=false)
      * @Assert\NotBlank
+     * @Groups("diet:read")
      */
     private $snacks='';
 
@@ -58,6 +66,7 @@ class Diet
      *
      * @ORM\Column(name="calories", type="string", length=255, nullable=false)
      * @Assert\NotBlank
+     * @Groups("diet:read")
      */
     private $calories='';
 
@@ -157,5 +166,11 @@ class Diet
         $this->calories = $calories;
     }
 
-
+    public function findByCalories($calories){
+        return $this->createQueryBuilder('diet')
+            ->where('diet.calories LIKE :calories')
+            ->setParameter('calories', '%'.$calories.'%')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -30,8 +30,8 @@
                 <td>{{ workout.name }}</td>
                 <td>
                     <a href="{{ path('workout_show', {'id': workout.id}) }}">
-                        <img  src="{{ asset('back/images/samples/eye.png') }}" width="30" height="30">
-                    </a>
+                         <img  src="{{ asset('back/images/samples/eye.png') }}" width="30" height="30">
+                   </a>
 
                     <a href="{{ path('workout_edit', {'id': workout.id}) }}">
                         <img  src="{{ asset('back/images/samples/edit.png') }}" width="30" height="30">
@@ -64,14 +64,14 @@
                             $('#t tbody#search').empty();
                             $.each(JSON.parse(retour), function(i, obj) {
                                 $('#t tbody#all').hide();
-                                $('#t tbody#search').append('<tr><td> '+obj.id+'  </td><td>    '+obj.nbrSeries+'  </td><td>'+obj.dureeSerie +' </td><td>'+obj.bodyPart +' </td><td>'+obj.description +' </td><td>'+obj.name +' </td><td><a href="workout_show'+obj.id+'">modifier</a> </br><a href="workout_edit'+obj.id+'">supprimer</a></td></tr>');
+                                $('#t tbody#search').append('<tr><td> '+obj.id+'  </td><td>    '+obj.nbrSeries+'  </td><td>'+obj.dureeSerie +' </td><td>'+obj.bodyPart +' </td><td>'+obj.description +' </td><td>'+obj.name +' </td><td><a><img  src="{{ asset('back/images/samples/eye.png') }}" width="30" height="30"></a><br><a><img  src="{{ asset('back/images/samples/edit.png') }}" width="30" height="30"></a></td></tr>');
                             });
                         }
                         else
                         {
+                            $('#t tbody#search').hide();
                             $('#t tbody#all').show();
                             $('#t tbody#search').empty();
-                            $('#t tbody#search').fadeIn('fast');
                         }
                     },
                 });

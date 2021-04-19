@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 
 /**
  * @Route("/diet")
@@ -93,5 +94,19 @@ class DietController extends AbstractController
         }
 
         return $this->redirectToRoute('diet_index');
+    }
+
+    /**
+     * @Route("/searchDiet ", name="searchDiet")
+     */
+    public function searchDiet(Request $request,NormalizerInterface $Normalizer)
+    {
+        $repository = $this->getDoctrine()->getRepository(Diet::class);
+        $requestString=$request->get('searchValue');
+        $diet = $repository->findByCalories($requestString);
+        $jsonContent = $Normalizer->normalize($diet, 'json',['groups'=>'diet:read']);
+        $retour=json_encode($jsonContent);
+        return new Response($retour);
+
     }
 }

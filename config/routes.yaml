@@ -6,6 +6,48 @@ WorkoutChoice:
   path: /WorkoutChoice
   controller: App\Controller\DefaultController::WorkoutList
 
+DietChoice:
+  path: /DietChoice
+  controller: App\Controller\DefaultController::DietList
+
+
+
+searchWorkout:
+  path: /searchWorkout
+  controller: App\Controller\WorkoutController::searchWorkout
+
+searchDiet:
+  path: /searchDiet
+  controller: App\Controller\DietController::searchDiet
+
+
+
+Diet1600:
+  path: /Diet1600
+  controller: App\Controller\DefaultController::D1600list
+
+Diet1800:
+  path: /Diet1800
+  controller: App\Controller\DefaultController::D1800list
+
+Diet2000:
+  path: /Diet2000
+  controller: App\Controller\DefaultController::D2000list
+
+Diet2200:
+  path: /Diet2200
+  controller: App\Controller\DefaultController::D2200list
+
+Diet2400:
+  path: /Diet2400
+  controller: App\Controller\DefaultController::D2400list
+
+Diet2600:
+  path: /Diet2600
+  controller: App\Controller\DefaultController::D2600list
+
+
+
 WorkoutArms:
   path: /WorkoutArms
   controller: App\Controller\DefaultController::ArmsWlist
@@ -33,7 +75,3 @@ WorkoutLegs:
 WorkoutGlutes:
   path: /WorkoutShoulders
   controller: App\Controller\DefaultController::GlutesWlist
-
-searchWorkout:
-  path: /searchWorkout
-  controller: App\Controller\WorkoutController::searchWorkout

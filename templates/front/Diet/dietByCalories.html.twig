@@ -1,0 +1,21 @@
+{% extends 'front.html.twig' %}
+{% block test %}
+    <table style="width: 700px;">
+        <thead>
+        {%for data in data%}
+            <th style="vertical-align: top;">
+                <li>Petit déjeuner : {{ data.breakfast}}</li>
+                <br>
+                <li>Déjeuner: {{ data.lunch}}</li>
+                <br>
+                <li>Diner : {{ data.dinner}}</li>
+                <br>
+                <li>Gouter : {{ data.snacks}}</li>
+            </th>
+        {% endfor %}
+        </thead>
+    </table>
+    <br>
+    <br>
+    <a href="{{ path('DietChoice') }} "style="  background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;">Retour</a>
+{% endblock %}
