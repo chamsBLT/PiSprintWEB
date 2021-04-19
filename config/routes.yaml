@@ -30,6 +30,9 @@ IngredientStats:
   path: /IngredientStats
   controller: App\Controller\DefaultController::IngredientStats
 
+DietStats:
+  path: /DietStats
+  controller: App\Controller\DefaultController::DietStats
 
 
 Diet1600:

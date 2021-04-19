@@ -291,4 +291,38 @@ class DefaultController extends AbstractController
             'piechart' => $pieChart,
         ));
     }
+
+
+
+    public function DietStats()
+    {
+        $sql = "SELECT calories as c ,COUNT(*) as n  FROM `diet` GROUP BY calories";
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+
+        $data1 = $stmt->fetchAll();
+
+        foreach ($data1 as $val)
+        {
+            $data[] = array($val['c'], (int) $val['n']);
+        }
+
+        $pieChart = new  PieChart();
+        $pieChart->getData()->setArrayToDataTable([["Muscle","N"]]+$data);
+
+        $pieChart->getOptions()->setTitle('Stats : Diet ');
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->setWidth(900);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+
+        return $this->render('diet/statsDiet.html.twig', array(
+            'piechart' => $pieChart,
+        ));
+    }
 }

@@ -1,6 +1,6 @@
 {% extends 'front.html.twig' %}
 {% block test %}
-    <table style="width: 700px;">
+    <table style="width: 1500px;">
         <thead>
         {%for data in data%}
             <th style="vertical-align: top;">
@@ -16,5 +16,5 @@
     </table>
     <br>
     <br>
-    <a href="{{ path('WorkoutChoice') }} "style="  background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;">Retour</a>
+    <a href="{{ path('WorkoutChoice') }} "style="position: relative; background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;left: 650px;">Retour</a>
 {% endblock %}
