@@ -4,6 +4,9 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * Ingredient
@@ -19,6 +22,7 @@ class Ingredient
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @Groups("ingredient:read")
      */
     private $id;
 
@@ -27,6 +31,7 @@ class Ingredient
      *
      * @ORM\Column(name="category", type="string", length=255, nullable=false)
      * @Assert\NotBlank
+     * @Groups("ingredient:read")
      */
     private $category='';
 
@@ -35,6 +40,7 @@ class Ingredient
      *
      * @ORM\Column(name="calories_category", type="string", length=255, nullable=false)
      * @Assert\NotBlank
+     * @Groups("ingredient:read")
      */
     private $caloriesCategory='';
 
@@ -43,6 +49,7 @@ class Ingredient
      *
      * @ORM\Column(name="name", type="string", length=255, nullable=false)
      * @Assert\NotBlank
+     * @Groups("ingredient:read")
      */
     private $name='';
 
@@ -110,5 +117,12 @@ class Ingredient
         $this->name = $name;
     }
 
+    public function findByCategory($category){
+        return $this->createQueryBuilder('ingredient')
+            ->where('ingredient.category LIKE :category')
+            ->setParameter('category', '%'.$category.'%')
+            ->getQuery()
+            ->getResult();
+    }
 
 }

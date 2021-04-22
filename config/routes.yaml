@@ -20,6 +20,10 @@ searchDiet:
   path: /searchDiet
   controller: App\Controller\DietController::searchDiet
 
+searchIngredient:
+  path: /searchIngredient
+  controller: App\Controller\IngredientController::searchIngredient
+
 
 
 WorkoutStats:

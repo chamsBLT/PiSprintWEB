@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'ingredientBack.html.twig' %}
 
 {% block title %}Gestion des ingredients{% endblock %}
 
@@ -6,7 +6,9 @@
     <h1>Ingredients</h1>
     <a href="{{ path('ingredient_new') }}"><button type="button" style=" top: 200px;  background-color: #4CAF50;border: none;color:white;padding: 5px 15px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;">Créer un nouveau</button></a>
     <a href="{{ path('IngredientStats') }}"><button type="button" style=" top: 200px;  background-color: #f44336;border: none;color:white;padding: 5px 15px;text-align: center;text-decoration: none;display: inline-block;font-size: 16px;margin: 4px 2px;cursor: pointer;">Stats</button></a>
-    <table class="table">
+
+    <input  type="text" id="search" class="form-control" placeholder="Recherche (par catégorie)">
+    <table class="table" id="t">
         <thead>
             <tr>
                 <th>ID</th>
@@ -16,7 +18,7 @@
                 <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="all">
         {% for ingredient in ingredients %}
             <tr>
                 <td>{{ ingredient.id }}</td>
@@ -41,6 +43,39 @@
             </tr>
         {% endfor %}
         </tbody>
+        <tbody id="search">
+        </tbody>
     </table>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $( document ).ready(function() {
+            $("#search").keyup(function(e){
+                var value = $(this).val();
+                $.ajax({
+                    url : "{{ path('searchIngredient') }}",
+                    type : 'GET',
+                    data: {
+                        'searchValue' : value
+                    },
+                    success : function(retour){
+                        if(retour){
+                            $('#t tbody#search').empty();
+                            $.each(JSON.parse(retour), function(i, obj) {
+                                $('#t tbody#all').hide();
+                                $('#t tbody#search').append('<tr><td> '+obj.id+'  </td><td>    '+obj.category +'  </td><td>'+obj.calories +' </td><td>'+obj.name +' </td><td><a><img  src="{{ asset('back/images/samples/eye.png') }}" width="30" height="30"></a><br><a><img  src="{{ asset('back/images/samples/edit.png') }}" width="30" height="30"></a></td></tr>');
+                            });
+                        }
+                        else
+                        {
+                            $('#t tbody#search').hide();
+                            $('#t tbody#all').show();
+                            $('#t tbody#search').empty();
+                        }
+                    },
+                });
+                return false;
+            });
+        });
+    </script>
 
 {% endblock %}
