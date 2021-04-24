@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Ingredient;
 use App\Form\IngredientType;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -108,5 +109,37 @@ class IngredientController extends AbstractController
         $retour = json_encode($jsonContent);
         return new Response($retour);
 
+    }
+
+    public function IngredientStats()
+    {
+        $sql = "SELECT category as c ,COUNT(*) as n  FROM `ingredient` GROUP BY category";
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+
+        $data1 = $stmt->fetchAll();
+
+        foreach ($data1 as $val)
+        {
+            $data[] = array($val['c'], (int) $val['n']);
+        }
+
+        $pieChart = new  PieChart();
+        $pieChart->getData()->setArrayToDataTable([["Muscle","N"]]+$data);
+
+        $pieChart->getOptions()->setTitle('Stats : Ingredients /Categorie ');
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->setWidth(900);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+
+        return $this->render('ingredient/statsIngredient.html.twig', array(
+            'piechart' => $pieChart,
+        ));
     }
 }

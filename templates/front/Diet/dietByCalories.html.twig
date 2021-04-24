@@ -1,9 +1,10 @@
 {% extends 'front.html.twig' %}
 {% block test %}
-    <table style="width: 1000px;">
+    <table id="table" style="width: 1000px;">
         <thead>
         {%for data in data%}
             <th style="vertical-align: top;">
+                <li style="display: none">{{ data.id}}</li>
                 <li>Petit déjeuner : {{ data.breakfast}}</li>
                 <br>
                 <li>Déjeuner: {{ data.lunch}}</li>
@@ -11,11 +12,24 @@
                 <li>Diner : {{ data.dinner}}</li>
                 <br>
                 <li>Gouter : {{ data.snacks}}</li>
+                <br>
+                <li id="tcalories"value="{{ data.calories}}"></li>
             </th>
         {% endfor %}
         </thead>
     </table>
     <br>
     <br>
-    <a href="{{ path('DietChoice') }} "style="position: relative;  background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;left: 650px;">Retour</a>
+
+    <form style="position: relative; alignment: center;" class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ path('DietpdfList')}}">
+        <input id="fcalories" type="text" name="caloriesValue" style="display: none;"/>
+        <input type="submit" value="Pdf" style="background-color: #f44336; color: white; padding: 10px 46px;  text-align: center;  text-decoration: none; display: inline-block;">
+        <br>
+        <br>
+        <a href="{{ path('DietChoice') }} " style="background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;">Retour</a>
+    </form>
+
+    <script>
+        document.getElementById("fcalories").value = document.getElementById("tcalories").value ;
+    </script>
 {% endblock %}

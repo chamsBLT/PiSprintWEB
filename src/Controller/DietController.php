@@ -4,6 +4,9 @@ namespace App\Controller;
 
 use App\Entity\Diet;
 use App\Form\DietType;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -107,6 +110,66 @@ class DietController extends AbstractController
         $jsonContent = $Normalizer->normalize($diet, 'json',['groups'=>'diet:read']);
         $retour=json_encode($jsonContent);
         return new Response($retour);
+
+    }
+
+    public function DietStats()
+    {
+        $sql = "SELECT calories as c ,COUNT(*) as n  FROM `diet` GROUP BY calories";
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+
+        $data1 = $stmt->fetchAll();
+
+        foreach ($data1 as $val)
+        {
+            $data[] = array($val['c'], (int) $val['n']);
+        }
+
+        $pieChart = new  PieChart();
+        $pieChart->getData()->setArrayToDataTable([["Muscle","N"]]+$data);
+
+        $pieChart->getOptions()->setTitle('Stats : Diet /Calories');
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->setWidth(900);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+
+        return $this->render('diet/statsDiet.html.twig', array(
+            'piechart' => $pieChart,
+        ));
+    }
+
+    public function listPDF(Request $request): Response
+    {
+        $pdfOptions = new Options();
+        $pdfOptions->set('defaultFont', 'Arial');
+
+        $dompdf = new Dompdf($pdfOptions);
+
+        $calories = $request->request->get('caloriesValue');
+        $diets = $this->getDoctrine()
+            ->getRepository(Diet::class)
+            ->findByCalories($calories);
+
+        $html = $this->renderView('front/Diet/dietPDFlist.html.twig', [
+            'diets' => $diets,
+        ]);
+
+        $dompdf->loadHtml($html);
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+
+        $dompdf->stream("Mes_regimes.pdf", [
+            "Attachment" => true
+        ]);
 
     }
 }

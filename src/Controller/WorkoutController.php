@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Workout;
 use App\Form\WorkoutType;
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -109,6 +110,38 @@ class WorkoutController extends AbstractController
         $retour=json_encode($jsonContent);
         return new Response($retour);
 
+    }
+
+    public function WorkoutStats()
+    {
+        $sql = "SELECT body_part as b ,COUNT(*) as n FROM workout GROUP BY body_part";
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+
+        $data1 = $stmt->fetchAll();
+
+        foreach ($data1 as $val)
+        {
+            $data[] = array($val['b'], (int) $val['n']);
+        }
+
+        $pieChart = new  PieChart();
+        $pieChart->getData()->setArrayToDataTable([["Muscle","N"]]+$data);
+
+        $pieChart->getOptions()->setTitle('Stats : Workout /Muscle');
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->setWidth(900);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+
+        return $this->render('workout/statsWorkout.html.twig', array(
+            'piechart' => $pieChart,
+        ));
     }
 
 }

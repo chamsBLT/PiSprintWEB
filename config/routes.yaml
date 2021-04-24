@@ -26,17 +26,26 @@ searchIngredient:
 
 
 
+DietpdfList:
+  path: /DietpdfList
+  controller: App\Controller\DietController::listPDF
+
+
+
 WorkoutStats:
   path: /WorkoutStats
-  controller: App\Controller\DefaultController::WorkoutStats
+  controller: App\Controller\WorkoutController::WorkoutStats
 
 IngredientStats:
   path: /IngredientStats
-  controller: App\Controller\DefaultController::IngredientStats
+  controller: App\Controller\IngredientController::IngredientStats
 
 DietStats:
   path: /DietStats
-  controller: App\Controller\DefaultController::DietStats
+  controller: App\Controller\DietController::DietStats
+
+
+
 
 
 Diet1600:
@@ -90,5 +99,6 @@ WorkoutLegs:
   controller: App\Controller\DefaultController::LegsWlist
 
 WorkoutGlutes:
-  path: /WorkoutShoulders
+  path: /WorkoutGlutes
   controller: App\Controller\DefaultController::GlutesWlist
+
