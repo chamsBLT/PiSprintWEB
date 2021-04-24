@@ -1,6 +1,27 @@
 {% extends 'front.html.twig' %}
 
 {% block test %}
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: #023796;
+            padding: 10px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+        .button:hover {
+            background-color: #023796;
+            color: #4CAF50;
+
+        }
+    </style>
 <table>
     <thead>
     <tr>
@@ -66,10 +87,15 @@
 </table>
     <br>
     <br>
-    <a href="{{ path('WorkoutandDiet') }} "style="position: relative; background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;left: 650px;">Retour</a>
+    <a  class="button" href="{{ path('WorkoutandDiet') }} "style="position: relative; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;left: 650px;">Retour</a>
     <br>
-    <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ path('testing')}}">
+    <div >
+     <h5> En besoin d'une dose de motivation ?</h5>
+        <h6>Entrez votre numéro pour recevoir un SMS :</h6>
+    <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ path('WorkoutSMS')}}">
         <input id="phoneN" type="text" name="phoneNumber" />
-        <input type="submit" value="Motivate me">
+        <input type="submit" value="Me motiver" class="button">
     </form>
+
+    </div>
 {% endblock %}

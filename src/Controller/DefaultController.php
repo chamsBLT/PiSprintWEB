@@ -21,7 +21,7 @@ class DefaultController extends AbstractController
         return $this->render('front/diet/caloriesList.html.twig');
     }
 
-    public function testfunction(Request $request): Response
+    public function WorkoutSMS(Request $request): Response
     {
         $sql = "SELECT quote FROM `motivation` ORDER BY RAND() LIMIT 1";
 
@@ -50,7 +50,7 @@ class DefaultController extends AbstractController
         );
 
 
-        return $this->render('front/workout/test.html.twig', array(
+        return $this->render('front/workout/smsConfirmation.html.twig', array(
         'data' => $PhoneNumber,
     ));
     }

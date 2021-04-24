@@ -104,6 +104,6 @@ WorkoutGlutes:
 
 
 
-testing:
-  path: /test
-  controller: App\Controller\DefaultController::testfunction
+WorkoutSMS:
+  path: /WorkoutSMS
+  controller: App\Controller\DefaultController::WorkoutSMS

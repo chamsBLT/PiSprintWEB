@@ -1,0 +1,40 @@
+{% extends 'front.html.twig' %}
+{% block test %}
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: #023796;
+            padding: 16px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+        .button:hover {
+            background-color: #023796;
+            color: #4CAF50;
+
+        }
+    </style>
+
+    <img src="{{ asset('front/img/logo/sms.png') }}"  style="width: 100px; height: 100px; position: relative; margin-left: 40%;">
+    <br>
+    <br>
+    <h2  style="color: #023796; position: relative; margin-left: 30%;"> Votre sms a été bien envoyé à :  </h2>
+    <h2  style="color: #2edf6e; position: relative; margin-left: 35%;"> {{ data }} </h2>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div style="width: 400px; margin-left: 31%;" align="center" >
+        <h4 > Naviguez vers : </h4>
+        <a class="button" href="{{ path('WorkoutChoice') }}">Sport</a>
+        <a class="button" href="{{ path('DietChoice') }}">Régime</a>
+    </div>
+
+{% endblock %}
