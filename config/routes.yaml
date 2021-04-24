@@ -102,3 +102,8 @@ WorkoutGlutes:
   path: /WorkoutGlutes
   controller: App\Controller\DefaultController::GlutesWlist
 
+
+
+testing:
+  path: /test
+  controller: App\Controller\DefaultController::testfunction

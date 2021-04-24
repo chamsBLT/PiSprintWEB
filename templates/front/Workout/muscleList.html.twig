@@ -67,4 +67,9 @@
     <br>
     <br>
     <a href="{{ path('WorkoutandDiet') }} "style="position: relative; background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;left: 650px;">Retour</a>
+    <br>
+    <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ path('testing')}}">
+        <input id="phoneN" type="text" name="phoneNumber" />
+        <input type="submit" value="Motivate me">
+    </form>
 {% endblock %}

@@ -2,7 +2,10 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Twilio\Exceptions\ConfigurationException;
+use Twilio\Rest\Client;
 class DefaultController extends AbstractController
 {
 
@@ -18,8 +21,38 @@ class DefaultController extends AbstractController
         return $this->render('front/diet/caloriesList.html.twig');
     }
 
-    public function testfunction(){
+    public function testfunction(Request $request): Response
+    {
+        $sql = "SELECT quote FROM `motivation` ORDER BY RAND() LIMIT 1";
 
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+
+        $data1 = $stmt->fetchAll();
+
+        $data = json_encode($data1);
+
+        $PhoneNumber = $request->request->get('phoneNumber');
+
+        $sid = 'AC5828257557665ce4a42bb6bc9eb918d8';
+        $token = 'afbafc0cf225f0036b907463a9866a4f';
+
+        $client = new Client($sid, $token);
+
+        $client->messages->create(
+
+            $PhoneNumber,
+            [
+                'from' => '+15866666580',
+                'body' => $data
+            ]
+        );
+
+
+        return $this->render('front/workout/test.html.twig', array(
+        'data' => $PhoneNumber,
+    ));
     }
 
 
