@@ -1,5 +1,25 @@
 {% extends 'front.html.twig' %}
 {% block test %}
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: #023796;
+            padding: 10px 40px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 20px;
+        }
+        .button:hover {
+            background-color: #023796;
+            color: #4CAF50;
+        }
+        </style>
     <table style="width: 1500px;">
         <thead>
         {%for data in data%}
@@ -16,5 +36,5 @@
     </table>
     <br>
     <br>
-    <a href="{{ path('WorkoutChoice') }} "style="position: relative; background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;left: 650px;">Retour</a>
+    <a href="{{ path('WorkoutChoice') }} " class="button " style="position: relative; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;left: 650px;">Retour</a>
 {% endblock %}

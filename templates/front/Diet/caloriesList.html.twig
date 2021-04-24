@@ -3,10 +3,10 @@
 {% block test %}
     <style>
         .button {
-            background-color: #f44336; /* Green */
+            background-color: #4CAF50;
             border: none;
             color: white;
-            padding: 16px 32px;
+            padding: 16px 40px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
@@ -14,24 +14,28 @@
             margin: 4px 2px;
             transition-duration: 0.4s;
             cursor: pointer;
-          }
+            border-radius: 20px;
+        }
         .button:hover {
-            background-color: #4CAF50;
+            background-color: #023796;
             color: white;
 
         }
     </style>
 
-    <div style="position: relative ; left: 400px; width: 800px;">
-        <img src="{{ asset ('front/img/banner/calories.png') }}" style="height: 100px;width: 100px;margin-left: 280px;">
+    <div style="border:2px solid #4CAF50; border-radius: 20px; width: 950px; position: relative; margin-left: 260px;margin-bottom: 100px;">
+        <h4 style="margin: 30px;">
+            ⦿ Veuillez choisir le  nombre des calories  du  regime auquel vous souhaitez  suivre  :
+        </h4>
+    </div>
+
+    <div style="position: relative ; left: 350px; width: 800px; border:2px solid #023796; border-radius: 20px;">
+        <img src="{{ asset ('front/img/logo/diet.png') }}" style="height: 100px;width: 100px;margin-left: 350px;">
         <br>
         <br>
         <br>
-        <h5>
-            Veuillez choisir le  nombre Cal  du  regime auquel vous souhaitez suivre.
-        </h5>
         <br>
-        <a class="button" href="{{ path('Diet1600') }}">1600</a>
+        <a class="button" style="margin-left: 20px" href="{{ path('Diet1600') }}">1600</a>
         <a class="button" href="{{ path('Diet1800') }}">1800</a>
         <a class="button" href="{{ path('Diet2000') }}">2000</a>
         <a class="button" href="{{ path('Diet2200') }}">2200</a>
@@ -39,12 +43,12 @@
         <a class="button" href="{{ path('Diet2600') }}">2600</a>
         <br>
         <br>
-        <a href="{{ path('WorkoutandDiet') }} "style="  background-color: #f44336; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block; position: relative ; left: 260px;">Retour</a>
+        <br>
     </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <a href="{{ path('WorkoutandDiet') }} " class="button" style="color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block; position: relative ; left: 1280px;">Retour</a>
 
-
-    <br>
-    <br>
-    <br>
-    <br>
 {% endblock %}

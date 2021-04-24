@@ -5,7 +5,7 @@
         .button {
             background-color: #4CAF50;
             border: none;
-            color: #023796;
+            color: white;
             padding: 10px 40px;
             text-align: center;
             text-decoration: none;
@@ -18,10 +18,18 @@
         }
         .button:hover {
             background-color: #023796;
-            color: #4CAF50;
-
+            color: white;
+        }
+        input[type=text] {
+            width: 40%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: none;
+            border-bottom: 2px solid #4CAF50;
         }
     </style>
+
 <table>
     <thead>
     <tr>
@@ -85,17 +93,25 @@
     </tr>
     </thead>
 </table>
+
     <br>
     <br>
-    <a  class="button" href="{{ path('WorkoutandDiet') }} "style="position: relative; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;left: 650px;">Retour</a>
+
+    <a  class="button" href="{{ path('WorkoutandDiet') }} "style="position: relative; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;left: 1280px; top: 290px;">Retour</a>
+
     <br>
-    <div >
-     <h5> En besoin d'une dose de motivation ?</h5>
-        <h6>Entrez votre numéro pour recevoir un SMS :</h6>
+
+    <div style="border:2px solid #023796; border-radius: 20px;  width: 450px; margin-left: 480px;">
+
+        <h5 style="margin-left: 30px; margin-top: 30px;"> En besoin d'une dose de motivation ?</h5>
+
+        <h6 style="margin-left: 30px;">Entrez votre numéro pour recevoir un SMS :</h6>
+
     <form class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ path('WorkoutSMS')}}">
-        <input id="phoneN" type="text" name="phoneNumber" />
-        <input type="submit" value="Me motiver" class="button">
+        <input id="phoneN" type="text" name="phoneNumber" style="margin-left: 30px; margin-bottom: 30px;" />
+        <input type="submit" value="Me motiver" class="button" style="margin-left: 30px;">
     </form>
 
     </div>
+
 {% endblock %}
