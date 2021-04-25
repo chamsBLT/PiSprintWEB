@@ -20,10 +20,10 @@
             color: #4CAF50;
         }
         </style>
-    <table style="width: 1500px;">
+    <table style="width: 1500px; position: relative; top: 100px;">
         <thead>
         {%for data in data%}
-            <th style="vertical-align: top;">
+            <th style="vertical-align: top; background-color: lightgreen; border-radius: 20px ; width: 500px; padding:15px; ">
                 <li>Nom : {{ data.name}}</li>
                 <br>
                 <li>Nombre de séries : {{ data.nbr_series}}</li>
@@ -31,10 +31,13 @@
                 <br>
                 <li>Description : {{ data.description}}</li>
             </th>
+            <th>
+
+            </th>
         {% endfor %}
         </thead>
     </table>
     <br>
     <br>
-    <a href="{{ path('WorkoutChoice') }} " class="button " style="position: relative; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;left: 650px;">Retour</a>
+    <a href="{{ path('WorkoutChoice') }} " class="button " style="position: relative; color: white; padding: 10px 35px;  text-align: center;  text-decoration: none; display: inline-block;left: 1280px; top: 270px;">Retour</a>
 {% endblock %}

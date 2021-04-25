@@ -1,29 +1,26 @@
 {% extends 'front.html.twig' %}
 
 {% block test %}
-    <h1></h1>
-    <table>
-        <thead>
-        <tr>
-            <th>
-                <a href="{{ path('WorkoutChoice') }}">
-                    <img  src="{{ asset('front/img/logo/workout_logo_home.png') }}" style="height: 300px;width: 300px;">
-                    <br>
-                    <h1 style="text-align: center;">Sport</h1>
-                </a>
-            </th>
-            <th style="width: 90px;"></th>
-            <th><h5>Vous pouvez choisir des régimes et des exercices selon vos besoin!</h5></th>
-            <th style="width: 90px;"></th>
-            <th>
-                <a href="{{ path('DietChoice') }}">
-                    <img  src="{{ asset('front/img/logo/diet_logo_home.png') }}" style="height: 300px;width: 300px;">
-                    <br>
-                    <h1 style="text-align: center;">Régime</h1>
-                </a>
-            </th>
-        </tr>
-        </thead>
-    </table>
+    <div style=" border:1px solid #023796; position: relative; background-color: white; border-radius: 20px ; width: 1400px; padding:20px; left: 2%;">
 
+        <div style=" border:2px solid lightgreen ; position:relative; background-color: #023796; border-radius: 20px ; width: 900px; padding:5px; left: 18%; ">
+            <h3 align="center" style=" position: relative; color: whitesmoke; ">Vous pouvez choisir des régimes et des exercices selon vos besoin!</h3>
+        </div>
+
+        <div style=" border:2px solid #023796; border-radius: 20px; position:relative; left:30%;top: 10px; background-color: lightgreen; border-radius: 20px ; width: 580px; padding:15px;">
+            <div>
+                <a href="{{ path('WorkoutChoice') }}">
+                    <img  src="{{ asset('front/img/logo/workout_logo_home.png') }}" style="height: 250px;width: 250px;  display: inline-block;">
+                    <h1 style=" position:relative; display: inline-block; left: 150px;">Sport</h1>
+                </a>
+            </div>
+
+            <div >
+                <a href="{{ path('DietChoice') }}">
+                    <img  src="{{ asset('front/img/logo/diet_logo_home.png') }}" style="height: 250px;width: 250px;  display: inline-block;">
+                    <h1 style=" position:relative; display: inline-block; left: 150px;">Régime</h1>
+                </a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
