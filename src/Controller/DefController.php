@@ -6,7 +6,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Twilio\Exceptions\ConfigurationException;
 use Twilio\Rest\Client;
-class DefaultController extends AbstractController
+use Screen\Capture;
+class DefController extends AbstractController
 {
 
     public function WorkoutandDiet(){
@@ -20,6 +21,44 @@ class DefaultController extends AbstractController
     public function DietList(){
         return $this->render('front/diet/caloriesList.html.twig');
     }
+
+
+
+    
+    public function ScreenShotWorkout(Request $request){
+        $url = 'http://localhost/ProjetS2/Projet/public/index.php/WorkoutStats';
+
+        $screenCapture = new Capture($url);
+        $fileLocation = 'C:/Users/balti/Desktop/AppStats/StatsWorkout.png';
+        $screenCapture->save($fileLocation);
+
+        return $this->redirect('http://localhost/ProjetS2/Projet/public/index.php/workout');
+    }
+
+
+
+    public function ScreenShotDiet(Request $request){
+        $url = 'http://localhost/ProjetS2/Projet/public/index.php/DietStats';
+
+        $screenCapture = new Capture($url);
+        $fileLocation = 'C:/Users/balti/Desktop/AppStats/StatsDiet.png';
+        $screenCapture->save($fileLocation);
+
+        return $this->redirect('http://localhost/ProjetS2/Projet/public/index.php/diet');
+    }
+
+
+
+    public function ScreenShotIngredient(Request $request){
+        $url = 'http://localhost/ProjetS2/Projet/public/index.php/IngredientStats';
+
+        $screenCapture = new Capture($url);
+        $fileLocation = 'C:/Users/balti/Desktop/AppStats/StatsIndredient.png';
+        $screenCapture->save($fileLocation);
+
+        return $this->redirect('http://localhost/ProjetS2/Projet/public/index.php/ingredient');
+    }
+
 
     public function WorkoutSMS(Request $request): Response
     {

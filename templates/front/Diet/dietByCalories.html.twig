@@ -1,4 +1,4 @@
-{% extends 'front.html.twig' %}
+{% extends 'frontWD.html.twig' %}
 {% block test %}
     <style>
         .button {
@@ -45,7 +45,7 @@
     <br>
     <br>
 
-    <form style="position: relative; left: 35%; top: 50px; width: 200px;" class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ path('DietpdfList')}}">
+    <form style="position: relative; left: 33%; top: 50px; width: 200px;" class="login100-form validate-form flex-sb flex-w" method="POST" action="{{ path('DietpdfList')}}">
         <input id="fcalories" type="text" name="caloriesValue" style="display: none;"/>
         <input class="button" type="submit" value="Télecharger Pdf" style="padding: 10px 46px;  text-align: center;  text-decoration: none; display: inline-block;">
         <br>

@@ -1,14 +1,14 @@
 WorkoutandDiet:
   path: /WorkoutandDiet
-  controller: App\Controller\DefaultController::WorkoutandDiet
+  controller: App\Controller\DefController::WorkoutandDiet
 
 WorkoutChoice:
   path: /WorkoutChoice
-  controller: App\Controller\DefaultController::WorkoutList
+  controller: App\Controller\DefController::WorkoutList
 
 DietChoice:
   path: /DietChoice
-  controller: App\Controller\DefaultController::DietList
+  controller: App\Controller\DefController::DietList
 
 
 
@@ -26,9 +26,72 @@ searchIngredient:
 
 
 
+
+Diet1600:
+  path: /Diet1600
+  controller: App\Controller\DefController::D1600list
+
+Diet1800:
+  path: /Diet1800
+  controller: App\Controller\DefController::D1800list
+
+Diet2000:
+  path: /Diet2000
+  controller: App\Controller\DefController::D2000list
+
+Diet2200:
+  path: /Diet2200
+  controller: App\Controller\DefController::D2200list
+
+Diet2400:
+  path: /Diet2400
+  controller: App\Controller\DefController::D2400list
+
+Diet2600:
+  path: /Diet2600
+  controller: App\Controller\DefController::D2600list
+
+
+
+WorkoutArms:
+  path: /WorkoutArms
+  controller: App\Controller\DefController::ArmsWlist
+
+WorkoutShoulders:
+  path: /WorkoutShoulders
+  controller: App\Controller\DefController::ShouldersWlist
+
+WorkoutAbs:
+  path: /WorkoutAbs
+  controller: App\Controller\DefController::AbsWlist
+
+WorkoutChest:
+  path: /WorkoutChest
+  controller: App\Controller\DefController::ChestWlist
+
+WorkoutBack:
+  path: /WorkoutBack
+  controller: App\Controller\DefController::BackWlist
+
+WorkoutLegs:
+  path: /WorkoutLegs
+  controller: App\Controller\DefController::LegsWlist
+
+WorkoutGlutes:
+  path: /WorkoutGlutes
+  controller: App\Controller\DefController::GlutesWlist
+
+
+
+
 DietpdfList:
   path: /DietpdfList
   controller: App\Controller\DietController::listPDF
+
+WorkoutSMS:
+  path: /WorkoutSMS
+  controller: App\Controller\DefController::WorkoutSMS
+
 
 
 
@@ -46,64 +109,14 @@ DietStats:
 
 
 
+ScreenShotWorkout:
+  path: /ScreenShotWorkout
+  controller: App\Controller\DefController::ScreenShotWorkout
 
+ScreenShotDiet:
+  path: /ScreenShotDiet
+  controller: App\Controller\DefController::ScreenShotDiet
 
-Diet1600:
-  path: /Diet1600
-  controller: App\Controller\DefaultController::D1600list
-
-Diet1800:
-  path: /Diet1800
-  controller: App\Controller\DefaultController::D1800list
-
-Diet2000:
-  path: /Diet2000
-  controller: App\Controller\DefaultController::D2000list
-
-Diet2200:
-  path: /Diet2200
-  controller: App\Controller\DefaultController::D2200list
-
-Diet2400:
-  path: /Diet2400
-  controller: App\Controller\DefaultController::D2400list
-
-Diet2600:
-  path: /Diet2600
-  controller: App\Controller\DefaultController::D2600list
-
-
-
-WorkoutArms:
-  path: /WorkoutArms
-  controller: App\Controller\DefaultController::ArmsWlist
-
-WorkoutShoulders:
-  path: /WorkoutShoulders
-  controller: App\Controller\DefaultController::ShouldersWlist
-
-WorkoutAbs:
-  path: /WorkoutAbs
-  controller: App\Controller\DefaultController::AbsWlist
-
-WorkoutChest:
-  path: /WorkoutChest
-  controller: App\Controller\DefaultController::ChestWlist
-
-WorkoutBack:
-  path: /WorkoutBack
-  controller: App\Controller\DefaultController::BackWlist
-
-WorkoutLegs:
-  path: /WorkoutLegs
-  controller: App\Controller\DefaultController::LegsWlist
-
-WorkoutGlutes:
-  path: /WorkoutGlutes
-  controller: App\Controller\DefaultController::GlutesWlist
-
-
-
-WorkoutSMS:
-  path: /WorkoutSMS
-  controller: App\Controller\DefaultController::WorkoutSMS
+ScreenShotIngredient:
+  path: /ScreenShotIngredient
+  controller: App\Controller\DefController::ScreenShotIngredient
