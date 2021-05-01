@@ -29,7 +29,7 @@ class DefController extends AbstractController
         $url = 'http://localhost/ProjetS2/Projet/public/index.php/WorkoutStats';
 
         $screenCapture = new Capture($url);
-        $fileLocation = 'C:/Users/balti/Desktop/AppStats/StatsWorkout.png';
+        $fileLocation = 'C:/Users/balti/Desktop/ESPRIT/3A/S2/PI_dev/SprintWeb/Demo/AppStats/StatsWorkout.png';
         $screenCapture->save($fileLocation);
 
         return $this->redirect('http://localhost/ProjetS2/Projet/public/index.php/workout');
@@ -41,7 +41,7 @@ class DefController extends AbstractController
         $url = 'http://localhost/ProjetS2/Projet/public/index.php/DietStats';
 
         $screenCapture = new Capture($url);
-        $fileLocation = 'C:/Users/balti/Desktop/AppStats/StatsDiet.png';
+        $fileLocation = 'C:/Users/balti/Desktop/ESPRIT/3A/S2/PI_dev/SprintWeb/Demo/AppStats/StatsDiet.png';
         $screenCapture->save($fileLocation);
 
         return $this->redirect('http://localhost/ProjetS2/Projet/public/index.php/diet');
@@ -53,7 +53,7 @@ class DefController extends AbstractController
         $url = 'http://localhost/ProjetS2/Projet/public/index.php/IngredientStats';
 
         $screenCapture = new Capture($url);
-        $fileLocation = 'C:/Users/balti/Desktop/AppStats/StatsIndredient.png';
+        $fileLocation = 'C:/Users/balti/Desktop/ESPRIT/3A/S2/PI_dev/SprintWeb/Demo/AppStats/StatsIndredient.png';
         $screenCapture->save($fileLocation);
 
         return $this->redirect('http://localhost/ProjetS2/Projet/public/index.php/ingredient');
