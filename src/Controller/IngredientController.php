@@ -98,7 +98,7 @@ class IngredientController extends AbstractController
     }
 
     /**
-     * @Route("/searchWorkout ", name="searchWorkout")
+     * @Route("/searchIngredient ", name="searchIngredient")
      */
     public function searchIngredient(Request $request, NormalizerInterface $Normalizer)
     {
