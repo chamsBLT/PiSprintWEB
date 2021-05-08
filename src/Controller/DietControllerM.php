@@ -88,7 +88,7 @@ class DietControllerM extends AbstractController
     }
 
     /**
-     * @Route("/DeleteDietJSON/{id}", name="DeleteDietJSON")
+     * @Route("/DeleteDietJSON/{id}", name=DeleteDietJSON")
      */
     public function DeleteDietJSON(Request $request,NormalizerInterface $Normalizer,$id){
         $em= $this->getDoctrine()->getManager();
