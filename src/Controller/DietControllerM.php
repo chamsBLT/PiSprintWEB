@@ -26,6 +26,18 @@ class DietControllerM extends AbstractController
     }
 
     /**
+     * @Route("/DietByidJSON/{id}", name="DietByidJSON")
+     */
+    public function DietByidJSON(Request $request,$id,NormalizerInterface $Normalizer){
+
+        $em= $this->getDoctrine()->getManager();
+        $diet = $em->getRepository(Diet::class)->findByid($id);
+
+        $jsonContent = $Normalizer->normalize($diet,'json',['groups'=>'diet:read']);
+        return new Response(json_encode($jsonContent));
+    }
+
+    /**
      * @Route("/DietByCaloriesJSON/{calories}", name="DietByCaloriesJSON")
      */
     public function DietByCaloriesJSON(Request $request,$calories,NormalizerInterface $Normalizer){
