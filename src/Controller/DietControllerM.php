@@ -42,10 +42,15 @@ class DietControllerM extends AbstractController
      */
     public function DietByCaloriesJSON(Request $request,$calories,NormalizerInterface $Normalizer){
 
-        $em= $this->getDoctrine()->getManager();
-        $diet = $em->getRepository(Diet::class)->findByCalories($calories);
+        $sql = "SELECT * FROM diet WHERE diet.calories LIKE $calories ORDER BY RAND() LIMIT 1";
 
-        $jsonContent = $Normalizer->normalize($diet,'json',['groups'=>'diet:read']);
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+
+        $data = $stmt->fetchAll();
+
+        $jsonContent = $Normalizer->normalize($data,'json',['groups'=>'diet:read']);
         return new Response(json_encode($jsonContent));
     }
 
@@ -99,5 +104,21 @@ class DietControllerM extends AbstractController
 
         $jsonContent = $Normalizer->normalize($diet,'json',['groups'=>'diet:read']);
         return new Response("Diet deleted successfully !");
+    }
+
+    /**
+     * @Route("/DietStatsJSON", name="DietStatsJSON")
+     */
+    public function DietStatsJSON(Request $request,NormalizerInterface $Normalizer){
+        $sql = "SELECT calories ,COUNT(*) as n  FROM `diet` GROUP BY calories";
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+
+        $data = $stmt->fetchAll();
+
+        $jsonContent = $Normalizer->normalize($data,'json',['groups'=>'diet:read']);
+        return new Response(json_encode($jsonContent));
     }
 }

@@ -99,4 +99,20 @@ class WorkoutControllerM extends AbstractController
         $jsonContent = $Normalizer->normalize($workout,'json',['groups'=>'workout:read']);
         return new Response("Workout deleted successfully !");
     }
+
+    /**
+     * @Route("/WorkoutStatsJSON", name="WorkoutStatsJSON")
+     */
+    public function WorkoutStatsJSON(Request $request,NormalizerInterface $Normalizer){
+        $sql = "SELECT body_part ,COUNT(*) as n  FROM `workout` GROUP BY body_part";
+
+        $em = $this->getDoctrine()->getManager();
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+
+        $data = $stmt->fetchAll();
+
+        $jsonContent = $Normalizer->normalize($data,'json',['groups'=>'diet:read']);
+        return new Response(json_encode($jsonContent));
+    }
 }
